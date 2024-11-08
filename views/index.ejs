@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+   
+    <link rel="stylesheet" href="css/indexstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    
+    
+</head>
+<body>
+   <section class="header">
+    <div class="logo">
+        <i class="fa-solid fa-bars icon icon0 menu"></i>
+        <h2>POS</h2>
+    </div>
+    <div class="search-notification-profile">
+        <div class="search">
+            <input type="text" placeholder="search here">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="notification-profile">
+            <div class="picon scan">
+                <button>scan</button>
+            </div>
+            <div class="picon pos">
+                <a href="#"><button>pos</button></a>
+            </div>
+            <div class="picon bell">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+            <div class="picon profile" onclick="toggledropdown()">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="dropdown" id="dropdowns">
+                
+                <div class="profilecard">
+                    <div class="cardborder">
+                        <img src="#" alt="profile image" class="cardimage">
+                        
+                    </div>
+                    
+                    <div class="settingandlogout">
+                        <div class="settings">
+                            <a href="#"><i class="fa-solid fa-gear"></i></a>
+                        </div>
+                        <div class="logouts">
+                            <a href="#"><i class="fa-solid fa-right-from-bracket"></i></a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+   </section>
+   
+   
+   <section class="main">
+    
+    <div class="sidebar">
+        <ul class="sidebar-top-item">
+            <li>
+                <a href="#" id="active">
+                    <span class="icon icon1"><i class="fa-solid fa-house"></i></span>
+                    <span class="item">dashboard</span>
+                </a>
+            </li>
+            <li >
+                
+
+                <a href="#" class="menuitem" >
+                    
+                    <span class="icon icon2"><i class="fa-solid fa-cart-shopping"></i></span>
+                    <span class="item">purchase order</span>
+                    <span class="icon arrow"><i class="fa-solid fa-angle-right"></i></span>
+                    
+                </a>
+                <ul class="submenu">
+                    <a href="purchase/list">purchase list</a>
+                    <a href="purchase/create">create purchase</a>
+                    <a href="#">manage purchase invoice</a>
+                    <a href="#">purchase return</a>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="menuitem">
+                    <span class="icon icon3"><i class="fa-solid fa-sack-dollar"></i></span>
+                    <span class="item">sale transaction</span>
+                    <span class="icon arrow"><i class="fa-solid fa-angle-right"></i></span>
+                </a>
+                <ul class="submenu">
+                    <a href="#">sale list</a>
+                    <a href="#">pos</a>
+                    <a href="#">manage sale invoice</a>
+                    <a href="#">sale return</a>
+                </ul>
+                
+            </li>
+            <li>
+                <a href="#" class="menuitem">
+                    <span class="icon icon4"><i class="fa-solid fa-box-open"></i></span>
+                    <span class="item">inventory</span>
+                    <span class="icon arrow"><i class="fa-solid fa-angle-right"></i></span>
+                </a>
+                <ul class="submenu">
+                    <a href="#">product list</a>
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="menuitem">
+                    <span class="icon icon5"><i class="fa-solid fa-users"></i></span>
+                    <span class="item">vendor</span>
+                    <span class="icon arrow"><i class="fa-solid fa-angle-right"></i></span>
+                </a>
+                <ul class="submenu">
+                    <a href="#">vendor list</a>
+                    <a href="#">create new vendor</a>
+                    <a href="#">cash payment</a>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon icon6"><i class="fa-solid fa-chart-line"></i></span>
+                    <span class="item">report</span>
+                    
+                </a>
+            </li>
+        </ul>
+        <ul class="sidebar-bottom-item">
+            <li>
+                <a href="#">
+                    <span class="icon icon7"><i class="fa-solid fa-gear"></i></span>
+                    <span class="item">setting</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon icon8"><i class="fa-solid fa-right-from-bracket"></i></span>
+                    <span class="item">logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    
+    <div class="maincontent">
+        <h2>dashboard</h2>
+        <div class="container">
+          <div class="graphandstock">
+
+             <div class="graphbox">graph</div>
+             <div class="stockalertbox">stock</div>
+          </div>
+
+          <div class="infodata">data</div>
+          <div class="recenttrans">trans</div>
+        </div>
+    </div>
+   </section>
+   <script src="js/indexjs.js"></script>
+</body>
+</html>

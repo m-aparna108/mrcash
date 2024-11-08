@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase List</title>
+    <link rel="stylesheet" href="/css/purchaseliststyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body>
+   <section class="header">
+    <div class="logo">
+        <i class="fa-solid fa-bars icon icon0 menu"></i>
+        <h2>POS</h2>
+    </div>
+    <div class="search-notification-profile">
+        <div class="search">
+            <input type="text" placeholder="search here">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div class="notification-profile">
+            <div class="picon scan">
+                <button>scan</button>
+            </div>
+            <div class="picon pos">
+                <button>pos</button>
+            </div>
+            <div class="picon bell">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+            <div class="picon profile">
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+    </div>
+   </section>
+   
+   <section class="main">
+    <div class="sidebar">
+        <!-- Sidebar items... -->
+        <ul class="sidebar-top-item">
+            <li>
+                <a href="/index" id="active">
+                    <span class="icon icon1"><i class="fa-solid fa-house"></i></span>
+                    <span class="item">dashboard</span>
+                </a>
+            </li>
+            <li >
+                
+
+                <a href="#" class="menuitem" >
+                    
+                    <span class="icon icon2"><i class="fa-solid fa-cart-shopping"></i></span>
+                    <span class="item">purchase order</span>
+                    <span class="icon arrow"><i class="fa-solid fa-angle-right"></i></span>
+                    
+                </a>
+                <ul class="submenu">
+                    <a href="/purchase/list">purchase list</a>
+                    <a href="/purchase/create">create purchase</a>
+                    <a href="#">manage purchase invoice</a>
+                    <a href="#">purchase return</a>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="menuitem">
+                    <span class="icon icon3"><i class="fa-solid fa-sack-dollar"></i></span>
+                    <span class="item">sale transaction</span>
+                    <span class="icon arrow"><i class="fa-solid fa-angle-right"></i></span>
+                </a>
+                <ul class="submenu">
+                    <a href="#">sale list</a>
+                    <a href="#">pos</a>
+                    <a href="#">manage sale invoice</a>
+                    <a href="#">sale return</a>
+                </ul>
+                
+            </li>
+            <li>
+                <a href="#" class="menuitem">
+                    <span class="icon icon4"><i class="fa-solid fa-box-open"></i></span>
+                    <span class="item">inventory</span>
+                    <span class="icon arrow"><i class="fa-solid fa-angle-right"></i></span>
+                </a>
+                <ul class="submenu">
+                    <a href="#">product list</a>
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="menuitem">
+                    <span class="icon icon5"><i class="fa-solid fa-users"></i></span>
+                    <span class="item">vendor</span>
+                    <span class="icon arrow"><i class="fa-solid fa-angle-right"></i></span>
+                </a>
+                <ul class="submenu">
+                    <a href="#">vendor list</a>
+                    <a href="#">create new vendor</a>
+                    <a href="#">cash payment</a>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon icon6"><i class="fa-solid fa-chart-line"></i></span>
+                    <span class="item">report</span>
+                    
+                </a>
+            </li>
+        </ul>
+        <ul class="sidebar-bottom-item">
+            <li>
+                <a href="#">
+                    <span class="icon icon7"><i class="fa-solid fa-gear"></i></span>
+                    <span class="item">setting</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon icon8"><i class="fa-solid fa-right-from-bracket"></i></span>
+                    <span class="item">logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="maincontent">
+        <h2>Purchase List</h2>
+        <div class="filterandcreate">
+            <div class="filterbt">
+                <!--<button><a href="#">filter</a></button>-->
+                <button id="filterButton">Filter</button>
+            </div>
+            <div class="createbt">
+                <button><a href="/purchase/create">create</a></button>
+            </div>
+            <!-- Filter Popup Card -->
+        <div id="filterPopup" class="filter-popup" style="display: none;">
+        <h3>Filter Options</h3>
+        <form id="filterForm">
+            <label for="orderDate">Order Date:</label>
+            <input type="date" id="orderDate" name="orderDate"><br>
+
+            <label for="orderId">Order ID:</label>
+            <input type="text" id="orderId" name="orderId"><br>
+
+            <label for="supplier">Supplier:</label>
+            <input type="text" id="supplier" name="supplier"><br>
+
+            <label for="deliveryStatus">Delivery Status:</label>
+            <select id="deliveryStatus" name="deliveryStatus">
+                <option value="">Select</option>
+                <option value="delivered">Delivered</option>
+                <option value="undelivered">Undelivered</option>
+            </select><br>
+
+            <button type="submit">Apply Filters</button>
+            <button type="button" id="closePopup">Close</button>
+        </form>
+             </div>
+             <!--end of pop up card-->
+        </div>
+        
+       <div class="purchasetable">
+        <table>
+            <thead>
+                <tr>
+                    <th>S.no</th>
+                    <th>Date</th>
+                    <th>Order id</th>
+                    <th>Supplier</th>
+                    <th>Delivery Status</th>
+                    <th>Total</th>
+                    <th>View Invoice</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% purchaseOrders.forEach((order, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= order.orderdate.toISOString().split('T')[0] %></td>
+                        <td><%= order.po_id %></td>
+                        <td><%= order.vendor_id %></td> <!-- Assuming you fetch vendor name from another table if needed -->
+                        <td> <form action="/purchase/update-status/<%= order.po_id %>" method="POST" style="display:inline;">
+                            <select name="delivery_status">
+                                <option value="delivered" <%= order.delivery_status === 'delivered' ? 'selected' : '' %>>Delivered</option>
+                                <option value="undelivered" <%= order.delivery_status === 'undelivered' ? 'selected' : '' %>>Undelivered</option>
+                            </select>
+                            <button type="submit">Update</button>
+                            </form>
+                        </td>
+                        <td><%= order.total_amount %></td>
+                        
+                        <td>
+                            <% if (order.invoice_pdf) { %>
+                                <a href="<%= order.invoice_pdf %>" target="_blank">
+                                  View Invoice
+                                </a>
+                                <%= console.log("Invoice link generated:", order.invoice_pdf) %>
+                              <% } else { %>
+                                No Invoice
+                              <% } %>
+                        </td>
+                        <td>
+                            <form action="/purchase/delete/<%= order.po_id %>" method="POST" style="display:inline;">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+       </div>
+    </div>
+   </section>
+   <script src="/js/purchaselistjs.js"></script>
+</body>
+</html>
