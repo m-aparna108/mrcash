@@ -2,7 +2,7 @@ const mysql=require('mysql2');
 const db=mysql.createConnection({
     host:'localhost',
     user:'root',
-    password:'admin',
+    password:,
     database:'pos',
     port:'3308'
 
@@ -15,5 +15,6 @@ db.connect((err)=>{
     }
     console.log('connected');
 });
+
 
 module.exports=db;
